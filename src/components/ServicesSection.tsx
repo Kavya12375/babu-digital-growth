@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
-import seoIcon from "@/assets/seo-icon.png";
-import googleAdsIcon from "@/assets/google-ads-icon.png";
-import webDesignIcon from "@/assets/web-design-icon.png";
-import socialMediaIcon from "@/assets/social-media-icon.png";
-import webDevIcon from "@/assets/web-dev-icon.png";
-import emailIcon from "@/assets/email-icon.png";
-import contentIcon from "@/assets/content-icon.png";
-import affiliateIcon from "@/assets/affiliate-icon.png";
+import seoIcon from "@/assets/seo-icon.webp";
+import googleAdsIcon from "@/assets/google-ads-icon.webp";
+import webDesignIcon from "@/assets/web-design-icon.webp";
+import socialMediaIcon from "@/assets/social-media-icon.webp";
+import webDevIcon from "@/assets/web-dev-icon.webp";
+import emailIcon from "@/assets/email-icon.webp";
+import contentIcon from "@/assets/content-icon.webp";
+import affiliateIcon from "@/assets/affiliate-icon.webp";
 
 const ServicesSection = () => {
   const services = [
@@ -85,7 +85,14 @@ const ServicesSection = () => {
               <div className="space-y-4">
                 {/* Icon */}
                 <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center group-hover:animate-bounce-gentle transition-all duration-300">
-                  <img src={service.icon} alt={service.title} className="w-10 h-10 object-contain filter brightness-0 invert" />
+                  <img 
+                    src={service.icon} 
+                    alt={service.title} 
+                    className="w-10 h-10 object-contain filter brightness-0 invert" 
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                  />
                 </div>
 
                 {/* Title */}

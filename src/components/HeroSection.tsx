@@ -1,19 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { ArrowRight, Play, TrendingUp } from "lucide-react";
-import heroBackground from "@/assets/hero-bg.jpg";
+import { ArrowRight, TrendingUp } from "lucide-react";
+import heroBackground from "@/assets/hero-bg.webp";
 import { ScheduleModal } from "./ScheduleModal";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-hero"></div>
-      </div>
+      {/* Optimized Background Image */}
+      <img 
+        src={heroBackground}
+        alt="Digital marketing background"
+        className="absolute inset-0 w-full h-full object-cover"
+        width="1920"
+        height="1080"
+        loading="eager"
+      />
+      <div className="absolute inset-0 bg-gradient-hero"></div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20">
@@ -51,11 +54,6 @@ const HeroSection = () => {
                 <ScheduleModal />
               </DialogContent>
             </Dialog>
-            
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm">
-              <Play className="mr-2 h-5 w-5" />
-              Watch Demo
-            </Button>
           </div>
 
           {/* Stats */}

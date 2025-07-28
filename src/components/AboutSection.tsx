@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Target, Eye, Award, Users } from "lucide-react";
-import aboutImage from "@/assets/about-us.jpg";
+import aboutImage from "@/assets/about-us.webp";
 
 const AboutSection = () => {
   const values = [
@@ -88,6 +88,9 @@ const AboutSection = () => {
                 src={aboutImage} 
                 alt="About Babu Digital Media" 
                 className="w-full h-auto object-cover"
+                width="600"
+                height="400"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-brand-orange/20"></div>
             </div>

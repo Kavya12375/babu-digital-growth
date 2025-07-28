@@ -8,6 +8,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import WhatsAppChat from "@/components/WhatsAppChat";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const Index = () => {
   return (
@@ -31,6 +32,7 @@ const Index = () => {
       {/* Floating Elements */}
       <ChatBot />
       <WhatsAppChat />
+      <ScrollToTop />
     </div>
   );
 };

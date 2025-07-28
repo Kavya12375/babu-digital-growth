@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Menu, Calendar, Clock, User, Mail, Phone, MessageSquare } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { ScheduleModal } from "./ScheduleModal";
 
 const Header = () => {
@@ -32,7 +32,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img src={logo} alt="Babu Digital Media" className="h-10 w-10" />
+            <img src={logo} alt="Babu Digital Media" className="h-10 w-10" width="40" height="40" loading="eager" />
             <span className="text-xl font-bold text-primary">Babu Digital Media</span>
           </div>
 
@@ -99,7 +99,7 @@ const Header = () => {
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col space-y-6 mt-8">
                 <div className="flex items-center space-x-3 pb-4 border-b border-border">
-                  <img src={logo} alt="Babu Digital Media" className="h-8 w-8" />
+                  <img src={logo} alt="Babu Digital Media" className="h-8 w-8" width="32" height="32" loading="lazy" />
                   <span className="text-lg font-bold text-primary">Babu Digital Media</span>
                 </div>
                 
