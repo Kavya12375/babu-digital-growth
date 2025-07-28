@@ -32,7 +32,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img src={logo} alt="Babu Digital Media" className="h-10 w-10" width="40" height="40" loading="eager" />
+            <img src={logo} alt="Babu Digital Media" className="h-10 w-10" width="40" height="40" loading="eager" fetchPriority="high" />
             <span className="text-xl font-bold text-primary">Babu Digital Media</span>
           </div>
 
@@ -78,7 +78,7 @@ const Header = () => {
           <div className="hidden lg:flex">
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="cta" className="animate-pulse-glow">
+                <Button variant="cta">
                   <Calendar className="h-4 w-4" />
                   Schedule Demo
                 </Button>

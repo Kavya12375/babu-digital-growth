@@ -95,7 +95,7 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-brand-orange/20"></div>
             </div>
             {/* Floating Badge */}
-            <div className="absolute -bottom-6 -right-6 bg-brand-orange text-white p-6 rounded-2xl shadow-glow animate-bounce-gentle">
+            <div className="absolute -bottom-6 -right-6 bg-brand-orange text-white p-6 rounded-2xl shadow-glow">
               <div className="text-center">
                 <div className="text-2xl font-bold">5+</div>
                 <div className="text-sm">Years Experience</div>
@@ -109,7 +109,7 @@ const AboutSection = () => {
           {values.map((value, index) => (
             <Card key={index} className="p-6 bg-background border-border hover:shadow-card transition-all duration-300 group hover:scale-105">
               <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto group-hover:animate-bounce-gentle">
+                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <value.icon className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-primary">{value.title}</h3>

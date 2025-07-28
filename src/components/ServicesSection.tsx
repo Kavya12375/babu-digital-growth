@@ -84,7 +84,7 @@ const ServicesSection = () => {
             >
               <div className="space-y-4">
                 {/* Icon */}
-                <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center group-hover:animate-bounce-gentle transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center transition-all duration-300">
                   <img 
                     src={service.icon} 
                     alt={service.title} 
