@@ -1,36 +1,7 @@
 import React from "react";
 
 const ContactUs = () => {
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Collect form data using IDs
-    const formData = {
-      first_name: (document.getElementById("firstName") as HTMLInputElement).value,
-      last_name: (document.getElementById("lastName") as HTMLInputElement).value,
-      email: (document.getElementById("email") as HTMLInputElement).value,
-      message: (document.getElementById("message") as HTMLTextAreaElement).value,
-    };
-
-    // Send the form data to Formspree
-    try {
-      const response = await fetch("https://formspree.io/f/mnqldvpe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        alert("✅ Message sent successfully!");
-      } else {
-        alert("❌ Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      alert("⚠ There was an error sending the message.");
-    }
-  };
+https://formspree.io/f/xovlllbv
 
   return (
     <div className="max-w-4xl mx-auto p-4">
