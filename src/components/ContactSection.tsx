@@ -74,7 +74,7 @@ const ContactSection = () => {
                 <p className="text-muted-foreground">Fill out the form below and we'll get back to you within 24 hours.</p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form action="https://formspree.io/f/xovlllbv" method="POST" className="space-y-6">
               
                 <div className="grid grid-cols-1 gap-6">
                   <div className="space-y-2">
