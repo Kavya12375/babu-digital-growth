@@ -1,7 +1,26 @@
 import React from "react";
 
 const ContactUs = () => {
-https://formspree.io/f/xovlllbv
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    
+    try {
+      const response = await fetch("https://formspree.io/f/xovlllbv", {
+        method: "POST",
+        body: formData,
+      });
+      
+      if (response.ok) {
+        alert("✅ Message sent successfully!");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        alert("❌ Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      alert("⚠ There was an error sending the message.");
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto p-4">
