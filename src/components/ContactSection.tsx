@@ -77,6 +77,7 @@ const ContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6">
                   <div className="space-y-2">
+                    <https://formspree.io/f/xovlllbv method="POST">
                     <Label htmlFor="contact-name">Full Name *</Label>
                     <Input
                       id="contact-name"
