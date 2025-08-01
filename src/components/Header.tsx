@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -8,22 +9,24 @@ import { ScheduleModal } from "./ScheduleModal";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "/" },
     {
       name: "Services",
-      href: "#services",
+      href: "/services",
       dropdown: [
         { name: "SEO Optimization", href: "https://aesthetic-sherbet-152275.netlify.app/" },
         { name: "Facebook Growth Ads", href: "https://earnest-sawine-814933.netlify.app/" },
         { name: "Instagram Growth Ads", href: "https://earnest-sawine-814933.netlify.app/" },
       ]
     },
-    { name: "Packages", href: "#packages" },
-    { name: "About Us", href: "#about" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Packages", href: "/packages" },
+    { name: "About Us", href: "/about" },
+    { name: "FAQ", href: "/faqs" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   return (
@@ -31,10 +34,10 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <img src={logo} alt="Babu Digital Media" className="h-10 w-10" width="40" height="40" loading="eager" fetchPriority="high" />
             <span className="text-xl font-bold text-primary">Babu Digital Media</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
@@ -42,12 +45,14 @@ const Header = () => {
               <div key={item.name} className="relative group">
                 {item.dropdown ? (
                   <>
-                    <a
-                      href={item.href}
-                      className="text-foreground hover:text-brand-orange transition-colors duration-300 font-medium"
+                    <Link
+                      to={item.href}
+                      className={`text-foreground hover:text-brand-orange transition-colors duration-300 font-medium ${
+                        location.pathname === item.href ? 'text-brand-orange' : ''
+                      }`}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                     <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-elegant opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                       {item.dropdown.map((subItem) => (
                         <a
@@ -63,12 +68,14 @@ const Header = () => {
                     </div>
                   </>
                 ) : (
-                  <a
-                    href={item.href}
-                    className="text-foreground hover:text-brand-orange transition-colors duration-300 font-medium"
+                  <Link
+                    to={item.href}
+                    className={`text-foreground hover:text-brand-orange transition-colors duration-300 font-medium ${
+                      location.pathname === item.href ? 'text-brand-orange' : ''
+                    }`}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 )}
               </div>
             ))}
@@ -98,20 +105,22 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
               <div className="flex flex-col space-y-6 mt-8">
-                <div className="flex items-center space-x-3 pb-4 border-b border-border">
+                <Link to="/" className="flex items-center space-x-3 pb-4 border-b border-border" onClick={() => setIsOpen(false)}>
                   <img src={logo} alt="Babu Digital Media" className="h-8 w-8" width="32" height="32" loading="lazy" />
                   <span className="text-lg font-bold text-primary">Babu Digital Media</span>
-                </div>
+                </Link>
                 
                 {navItems.map((item) => (
                   <div key={item.name} className="space-y-2">
-                    <a
-                      href={item.href}
-                      className="block text-lg font-medium text-foreground hover:text-brand-orange transition-colors"
+                    <Link
+                      to={item.href}
+                      className={`block text-lg font-medium text-foreground hover:text-brand-orange transition-colors ${
+                        location.pathname === item.href ? 'text-brand-orange' : ''
+                      }`}
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                     {item.dropdown && (
                       <div className="pl-4 space-y-2">
                         {item.dropdown.map((subItem) => (

@@ -1,30 +1,21 @@
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ServicesSection from "@/components/ServicesSection";
-import PackagesSection from "@/components/PackagesSection";
 import FAQSection from "@/components/FAQSection";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import WhatsAppChat from "@/components/WhatsAppChat";
 import ScrollToTop from "@/components/ScrollToTop";
 
-const Index = () => {
+const FAQ = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <Header />
       
-      {/* Main Content */}
       <main>
-        <HeroSection />
+        <FAQSection />
       </main>
       
-      {/* Footer */}
       <Footer />
       
-      {/* Floating Elements */}
       <ChatBot />
       <WhatsAppChat />
       <ScrollToTop />
@@ -32,4 +23,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default FAQ;
