@@ -17,7 +17,7 @@ const Header = () => {
       name: "Services",
       href: "/services",
       dropdown: [
-        { name: "SEO Optimization", href: "https://aesthetic-sherbet-152275.netlify.app/" },
+        { name: "SEO Optimization", href: "/seo-optimization" },
         { name: "Facebook Growth Ads", href: "https://earnest-sawine-814933.netlify.app/" },
         { name: "Instagram Growth Ads", href: "https://earnest-sawine-814933.netlify.app/" },
       ]
