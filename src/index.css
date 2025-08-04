@@ -8,50 +8,56 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light color palette for SEO pages */
+    --background: 0 0% 99%;
+    --foreground: 220 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 15% 15%;
 
-    /* Brand colors based on #1D2856 (deep navy blue) and #E76A35 (vibrant orange) */
+    /* Light theme colors with better contrast */
     --primary: 220 54% 24%;
     --primary-foreground: 0 0% 100%;
     
     --brand-orange: 19 77% 56%;
     --brand-orange-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 96%;
+    /* Light pastel backgrounds */
+    --secondary: 220 30% 98%;
     --secondary-foreground: 220 54% 24%;
 
-    --muted: 220 20% 96%;
-    --muted-foreground: 220 16% 47%;
+    --muted: 220 25% 97%;
+    --muted-foreground: 220 20% 50%;
 
-    --accent: 19 77% 56%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 19 60% 85%;
+    --accent-foreground: 220 54% 24%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
+    --border: 220 15% 90%;
+    --input: 220 15% 95%;
     --ring: 220 54% 24%;
 
-    /* Gradient definitions */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--brand-orange)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.95), hsl(var(--brand-orange) / 0.85));
+    /* Light gradient definitions */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--brand-orange) / 0.1));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--brand-orange) / 0.05));
     --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-seo-light: linear-gradient(135deg, hsl(210 100% 97%), hsl(200 100% 96%));
+    --gradient-seo-accent: linear-gradient(135deg, hsl(var(--primary) / 0.03), hsl(var(--accent) / 0.05));
     
-    /* Shadow definitions */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
-    --shadow-glow: 0 0 40px hsl(var(--brand-orange) / 0.3);
-    --shadow-card: 0 4px 20px hsl(var(--primary) / 0.1);
+    /* Light shadow definitions */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.08);
+    --shadow-glow: 0 0 40px hsl(var(--brand-orange) / 0.1);
+    --shadow-card: 0 4px 20px hsl(var(--primary) / 0.05);
+    --shadow-light: 0 2px 15px hsl(var(--primary) / 0.03);
     
-    /* Animation definitions */
-    --transition-smooth: all 0.2s ease;
+    /* Motion animation definitions */
+    --transition-smooth: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
