@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://babu-digital-growth.lovable.app/sitemap.xml 
