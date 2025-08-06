@@ -1,17 +1,13 @@
-import React, { useEffect, useRef } from "react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import React, { useEffect } from "react";
 
 declare global {
   interface Window {
     emailjs: any;
+    sendEmail: (e: Event) => void;
   }
 }
 
 const ContactUs = () => {
-  const formRef = useRef<HTMLFormElement>(null);
-
   useEffect(() => {
     // Load EmailJS script
     const script = document.createElement('script');
@@ -22,51 +18,50 @@ const ContactUs = () => {
     };
     document.head.appendChild(script);
 
+    // Define sendEmail function globally
+    window.sendEmail = function(e: Event) {
+      e.preventDefault();
+
+      const firstName = (document.getElementById("first_name") as HTMLInputElement).value;
+      const lastName = (document.getElementById("last_name") as HTMLInputElement).value;
+      const email = (document.getElementById("email") as HTMLInputElement).value;
+      const phone = (document.getElementById("phone") as HTMLInputElement).value;
+      const message = (document.getElementById("message") as HTMLTextAreaElement).value;
+
+      window.emailjs.send("service_6d28", "template_yv5pmyd", {
+        first_name: firstName,
+        last_name: lastName,
+        user_email: email,
+        phone: phone,
+        message: message,
+      }).then(function(response: any) {
+        console.log("Mail sent to admin", response);
+
+        window.emailjs.send("service_6d28", "template_6xh0c3p", {
+          first_name: firstName,
+          last_name: lastName,
+          user_email: email,
+          phone: phone,
+          message: message
+        }).then(function(res: any) {
+          alert("Thank you! Your message has been sent.");
+          (document.getElementById("contact-form") as HTMLFormElement).reset();
+        }, function(err: any) {
+          alert("Thank you message failed.");
+          console.error("User Email Error:", err);
+        });
+
+      }, function(error: any) {
+        alert("Failed to send message. Try again.");
+        console.error("Admin Email Error:", error);
+      });
+    };
+
     return () => {
       document.head.removeChild(script);
+      delete window.sendEmail;
     };
   }, []);
-
-  const sendEmail = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!window.emailjs) {
-      alert("EmailJS not loaded yet. Please try again.");
-      return;
-    }
-
-    const formData = new FormData(e.target as HTMLFormElement);
-    const firstName = formData.get("first_name") as string;
-    const lastName = formData.get("last_name") as string;
-    const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
-    const message = formData.get("message") as string;
-
-    // Send form data to you
-    window.emailjs.send("service_6d28", "template_yv5pmyd", {
-      first_name: firstName,
-      last_name: lastName,
-      user_email: email,
-      phone: phone,
-      message: message,
-    }).then(function(response: any) {
-      console.log("Mail sent to you!", response.status, response.text);
-
-      // Send thank you email to user
-      window.emailjs.send("service_6d28", "template_6xh0c3p", {
-        first_name: firstName,
-        user_email: email
-      }).then(function(res: any) {
-        alert("Thank you! Your message has been sent.");
-        formRef.current?.reset();
-      }, function(err: any) {
-        alert("Thank you message failed.");
-      });
-
-    }, function(error: any) {
-      alert("Failed to send message. Try again.");
-    });
-  };
 
   return (
     <div className="max-w-4xl mx-auto p-4">
@@ -74,40 +69,47 @@ const ContactUs = () => {
         {/* Contact Form */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Send us a Message</h2>
-          <form ref={formRef} id="contact-form" onSubmit={sendEmail} className="space-y-4">
-            <Input
-              type="text"
-              name="first_name"
-              placeholder="First Name"
-              required
+          <form id="contact-form" onSubmit={(e) => window.sendEmail?.(e.nativeEvent)} className="space-y-4">
+            <input 
+              type="text" 
+              id="first_name" 
+              placeholder="First Name" 
+              required 
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             />
-            <Input
-              type="text"
-              name="last_name"
-              placeholder="Last Name"
-              required
+            <input 
+              type="text" 
+              id="last_name" 
+              placeholder="Last Name" 
+              required 
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             />
-            <Input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
+            <input 
+              type="email" 
+              id="email" 
+              placeholder="Your Email" 
+              required 
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             />
-            <Input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              required
+            <input 
+              type="tel" 
+              id="phone" 
+              placeholder="Phone Number" 
+              required 
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             />
-            <Textarea
-              name="message"
-              placeholder="Your Message"
-              required
-              className="min-h-[100px]"
+            <textarea 
+              id="message" 
+              placeholder="Your Message" 
+              required 
+              className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             />
-            <Button type="submit" className="w-full">
+            <button 
+              type="submit" 
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
+            >
               Send Message
-            </Button>
+            </button>
           </form>
         </div>
 
